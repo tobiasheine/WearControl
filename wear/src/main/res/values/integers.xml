@@ -16,4 +16,5 @@
 
 <resources>
     <integer name="action_text_faded_alpha">40</integer>
+    <integer name="action_image_scale">80</integer>
 </resources>

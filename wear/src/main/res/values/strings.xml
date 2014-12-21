@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">WearControl</string>
-    <string name="hello_round">Hello Round World!</string>
-    <string name="hello_square">Hello Square World!</string>
+    <string name="app_name">Silencer</string>
+    <string name="sound_profile_on">Sound on</string>
+    <string name="sound_profile_off">Sound off</string>
+    <string name="sound_profile_vibrate">Vibrate</string>
+    <string name="sound_profile_change_confirmation">Profile changed</string>
 
 </resources>

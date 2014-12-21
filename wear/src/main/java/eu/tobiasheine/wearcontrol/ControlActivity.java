@@ -1,20 +1,20 @@
 package eu.tobiasheine.wearcontrol;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.wearable.activity.ConfirmationActivity;
 import android.support.wearable.view.WearableListView;
-import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
-import java.util.Collection;
-import java.util.HashSet;
+import eu.tobiasheine.wearcontrol.core.SoundProfile;
+
 
 public class ControlActivity extends Activity implements WearableListView.ClickListener {
 
@@ -23,14 +23,11 @@ public class ControlActivity extends Activity implements WearableListView.ClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.wear_activity_control);
 
         WearableListView listView = (WearableListView) findViewById(R.id.sound_profiles_list);
-
-        // Assign an adapter to the list
         listView.setAdapter(new SoundProfilesListAdapter(this));
-
-        // Set a click listener
         listView.setClickListener(this);
 
         googleApiClient = new GoogleApiClient.Builder(this)
@@ -56,16 +53,25 @@ public class ControlActivity extends Activity implements WearableListView.ClickL
     @Override
     public void onClick(final WearableListView.ViewHolder viewHolder) {
 
+        final SoundProfile profile = SoundProfile.values()[viewHolder.getPosition()];
+
         PendingResult<NodeApi.GetConnectedNodesResult> connectedNodes = Wearable.NodeApi.getConnectedNodes(googleApiClient);
         connectedNodes.setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
             @Override
             public void onResult(NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
                 for (final Node node : getConnectedNodesResult.getNodes()) {
-                    Wearable.MessageApi.sendMessage(googleApiClient, node.getId(), "data " + viewHolder.getPosition(), null);
+                    Wearable.MessageApi.sendMessage(googleApiClient, node.getId(), profile.name(), null);
                 }
+
+                Intent intent = new Intent(ControlActivity.this, ConfirmationActivity.class);
+                intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
+                        ConfirmationActivity.SUCCESS_ANIMATION);
+                intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, getString(R.string.sound_profile_change_confirmation));
+                startActivity(intent);
+
+                finish();
             }
         });
-
     }
 
     @Override

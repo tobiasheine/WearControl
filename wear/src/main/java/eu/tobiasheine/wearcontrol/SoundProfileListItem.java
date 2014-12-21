@@ -3,20 +3,17 @@ package eu.tobiasheine.wearcontrol;
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SoundProfileListItem extends LinearLayout implements WearableListView.OnCenterProximityListener {
 
     private final float fadedTextAlpha;
+    private final float imageScale;
+
     private TextView tvProfileName;
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        tvProfileName = (TextView) findViewById(R.id.profile_name);
-
-    }
+    private ImageView ivProfileImage;
 
     public SoundProfileListItem(Context context) {
         this(context, null);
@@ -28,19 +25,29 @@ public class SoundProfileListItem extends LinearLayout implements WearableListVi
 
     public SoundProfileListItem(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
         fadedTextAlpha = getResources()
                 .getInteger(R.integer.action_text_faded_alpha) / 100f;
+        imageScale = getResources()
+                .getInteger(R.integer.action_image_scale) / 100f;;
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        tvProfileName = (TextView) findViewById(R.id.profile_name);
+        ivProfileImage = (ImageView) findViewById(R.id.profile_image);
     }
 
     @Override
     public void onCenterPosition(boolean b) {
-        tvProfileName.setAlpha(1f);
+        ivProfileImage.animate().scaleX(1f).scaleY(1f).alpha(1).setDuration(100);
+        tvProfileName.animate().alpha(1).setDuration(100);
     }
 
     @Override
     public void onNonCenterPosition(boolean b) {
-        tvProfileName.setAlpha(fadedTextAlpha);
+        ivProfileImage.animate().scaleX(imageScale).scaleY(imageScale).alpha(fadedTextAlpha).setDuration(100);
+        tvProfileName.animate().alpha(fadedTextAlpha).setDuration(100);
     }
 }
 
