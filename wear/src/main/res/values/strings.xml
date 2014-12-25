@@ -5,5 +5,6 @@
     <string name="sound_profile_off">Sound off</string>
     <string name="sound_profile_vibrate">Vibrate</string>
     <string name="sound_profile_change_confirmation">Profile changed</string>
+    <string name="sound_profile_change_failure">Could not change profile. Is handheld connected?</string>
 
 </resources>

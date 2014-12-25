@@ -7,8 +7,8 @@ android {
     defaultConfig {
         applicationId "eu.tobiasheine.wearcontrol"
         minSdkVersion 19
-        targetSdkVersion 20
-        versionCode 1
+        targetSdkVersion 21
+        versionCode 3
         versionName "1.0"
     }
     buildTypes {

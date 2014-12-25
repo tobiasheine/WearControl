@@ -40,14 +40,20 @@ public class SoundProfileListItem extends LinearLayout implements WearableListVi
 
     @Override
     public void onCenterPosition(boolean b) {
-        ivProfileImage.animate().scaleX(1f).scaleY(1f).alpha(1).setDuration(100);
-        tvProfileName.animate().alpha(1).setDuration(100);
+        setValues(1f, 1f);
     }
 
     @Override
     public void onNonCenterPosition(boolean b) {
-        ivProfileImage.animate().scaleX(imageScale).scaleY(imageScale).alpha(fadedTextAlpha).setDuration(100);
-        tvProfileName.animate().alpha(fadedTextAlpha).setDuration(100);
+        setValues(fadedTextAlpha, imageScale);
+    }
+
+    private void setValues(float textAlpha, float scale) {
+        ivProfileImage.setScaleX(scale);
+        ivProfileImage.setScaleY(scale);
+
+        ivProfileImage.setAlpha(textAlpha);
+        tvProfileName.setAlpha(textAlpha);
     }
 }
 
