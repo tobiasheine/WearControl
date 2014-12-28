@@ -85,7 +85,7 @@ public class ControlActivity extends Activity implements WearableListView.ClickL
 
     @Override
     public void onSuccess() {
-        Intent intent = new Intent(ControlActivity.this, ConfirmationActivity.class);
+        final Intent intent = new Intent(ControlActivity.this, ConfirmationActivity.class);
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                 ConfirmationActivity.SUCCESS_ANIMATION);
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, getString(R.string.sound_profile_change_confirmation));
@@ -96,7 +96,7 @@ public class ControlActivity extends Activity implements WearableListView.ClickL
 
     @Override
     public void onFailure() {
-        Intent intent = new Intent(ControlActivity.this, ConfirmationActivity.class);
+        final Intent intent = new Intent(ControlActivity.this, ConfirmationActivity.class);
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                 ConfirmationActivity.FAILURE_ANIMATION);
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, getString(R.string.sound_profile_change_failure));

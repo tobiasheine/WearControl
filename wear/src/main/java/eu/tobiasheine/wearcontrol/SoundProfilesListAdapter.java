@@ -40,9 +40,8 @@ public class SoundProfilesListAdapter extends WearableListView.Adapter {
 
     @Override
     public void onBindViewHolder(WearableListView.ViewHolder holder, int position) {
-        SoundProfile profile = SoundProfile.values()[position];
-
-        ProfileViewHolder profileViewHolder = (ProfileViewHolder) holder;
+        final SoundProfile profile = SoundProfile.values()[position];
+        final ProfileViewHolder profileViewHolder = (ProfileViewHolder) holder;
 
         switch (profile) {
             case SOUND_ON:

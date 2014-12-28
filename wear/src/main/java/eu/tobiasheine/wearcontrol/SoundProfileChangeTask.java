@@ -24,7 +24,7 @@ public class SoundProfileChangeTask extends AsyncTask<SoundProfile, Integer, com
     @Override
     protected com.google.android.gms.common.api.Status doInBackground(SoundProfile... params) {
 
-        List<Node> connectedNodes = Wearable.NodeApi.getConnectedNodes(googleApiClient).await().getNodes();
+        final List<Node> connectedNodes = Wearable.NodeApi.getConnectedNodes(googleApiClient).await().getNodes();
 
         if (connectedNodes.isEmpty()) {
             return new com.google.android.gms.common.api.Status(WearableStatusCodes.ERROR);

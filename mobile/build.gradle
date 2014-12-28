@@ -8,12 +8,12 @@ android {
         applicationId "eu.tobiasheine.wearcontrol"
         minSdkVersion 19
         targetSdkVersion 21
-        versionCode 3
+        versionCode 4
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
