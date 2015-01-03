@@ -1,6 +1,3 @@
-Android Wear App 
-
-
 # WearControl
 
 WearControl is an Android Wear App that allows you to change your handheld’s sound profile with a wearable device.
