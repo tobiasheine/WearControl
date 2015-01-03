@@ -1,4 +1,4 @@
-package eu.tobiasheine.wearcontrol;
+package eu.tobiasheine.wearcontrol.ui;
 
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import eu.tobiasheine.wearcontrol.R;
 
 public class SoundProfileListItem extends LinearLayout implements WearableListView.OnCenterProximityListener {
 

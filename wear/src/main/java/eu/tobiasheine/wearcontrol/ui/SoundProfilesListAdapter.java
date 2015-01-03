@@ -1,4 +1,4 @@
-package eu.tobiasheine.wearcontrol;
+package eu.tobiasheine.wearcontrol.ui;
 
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import eu.tobiasheine.wearcontrol.R;
 import eu.tobiasheine.wearcontrol.core.SoundProfile;
 
 

@@ -1,4 +1,4 @@
-package eu.tobiasheine.wearcontrol;
+package eu.tobiasheine.wearcontrol.profile_task;
 
 import android.os.AsyncTask;
 
@@ -10,12 +10,13 @@ import com.google.android.gms.wearable.WearableStatusCodes;
 import java.util.List;
 
 import eu.tobiasheine.wearcontrol.core.SoundProfile;
+import eu.tobiasheine.wearcontrol.profile_task.ISoundProfileChangedListener;
 
 public class SoundProfileChangeTask extends AsyncTask<SoundProfile, Integer, com.google.android.gms.common.api.Status> {
 
     private final GoogleApiClient googleApiClient;
 
-    private SoundProfileChangedListener profileChangedListener;
+    private ISoundProfileChangedListener profileChangedListener;
 
     public SoundProfileChangeTask(GoogleApiClient googleApiClient) {
         this.googleApiClient = googleApiClient;
@@ -54,7 +55,7 @@ public class SoundProfileChangeTask extends AsyncTask<SoundProfile, Integer, com
         }
     }
 
-    public void setOnSoundProfileChangedListener(final SoundProfileChangedListener profileChangedListener) {
+    public void setOnSoundProfileChangedListener(final ISoundProfileChangedListener profileChangedListener) {
         this.profileChangedListener = profileChangedListener;
     }
 }

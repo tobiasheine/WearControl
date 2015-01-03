@@ -11,9 +11,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
 
 import eu.tobiasheine.wearcontrol.core.SoundProfile;
+import eu.tobiasheine.wearcontrol.profile_task.ISoundProfileChangedListener;
+import eu.tobiasheine.wearcontrol.profile_task.SoundProfileChangeTask;
+import eu.tobiasheine.wearcontrol.ui.SoundProfilesListAdapter;
 
 
-public class ControlActivity extends Activity implements WearableListView.ClickListener, SoundProfileChangedListener {
+public class ControlActivity extends Activity implements WearableListView.ClickListener, ISoundProfileChangedListener {
 
     private GoogleApiClient googleApiClient;
 
